@@ -1,0 +1,4 @@
+---
+import Header from '../components/Header.astro'; import {meetings,extraMedia} from '../data/meetings.js'; import '../styles/global.css'; const vids=[...meetings.filter(m=>m.youtube),...extraMedia];
+---
+<html lang="ru"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><title>Медиа — DissLitClub</title></head><body><Header/><main class="wrap"><section class="page-title"><div class="eyebrow">DissLitClub archive</div><h1>Медиа</h1><p>Видеопрезентации и видеоотчёты клуба.</p></section><div class="media-grid">{vids.map(v=><article class="media-card"><div class="video"><iframe src={`https://www.youtube-nocookie.com/embed/${v.youtube}`} title={v.title} allowfullscreen></iframe></div><h2>{v.title}</h2><p>{v.author}</p>{v.note&&<div class="badge">{v.note}</div>}</article>)}</div></main></body></html>

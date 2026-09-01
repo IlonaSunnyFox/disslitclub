@@ -1,0 +1,6 @@
+---
+import Header from '../../components/Header.astro'; import {seasons,meetings} from '../../data/meetings.js'; import '../../styles/global.css';
+export function getStaticPaths(){return seasons.map(s=>({params:{id:String(s.id)},props:{season:s}}))}
+const {season}=Astro.props; const list=meetings.filter(m=>m.season===season.id);
+---
+<html lang="ru"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><title>Сезон {season.id} — DissLitClub</title></head><body><Header/><main class="wrap"><section class="page-title"><a class="back" href="/#archive">← Архив</a><div class="eyebrow" style="margin-top:35px">{season.years}</div><h1>Сезон 0{season.id}</h1><p>{list.length} встреч</p></section><div class="meeting-list">{list.map((m,i)=><a class="meeting-row" href={`/meeting/${m.slug}`}><span class="idx">{String(i+1).padStart(2,'0')}</span><span class="title">{m.title}</span><span class="author">{m.author}</span><span class="badge">{m.authorEvent?'Автор × DLC':m.youtube?'Есть видео':''}</span></a>)}</div></main></body></html>

@@ -1,111 +1,17 @@
 ---
-import "../styles/global.css";
-import { meetings } from "../data/meetings.js";
-const upcoming = meetings[0];
-const archive = meetings.slice(1);
+import Header from '../components/Header.astro';
+import {seasons, meetings, authorEvents} from '../data/meetings.js';
+import '../styles/global.css';
+const count=meetings.length;
 ---
-<!doctype html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="DissLitClub — закрытый книжный клуб на Кипре." />
-    <title>DissLitClub — книжный клуб на Кипре</title>
-  </head>
-  <body>
-    <header class="topbar">
-      <div class="container nav">
-        <a class="brand" href="/">
-          <img src="/images/disslit-logo.png" alt="DissLitClub" />
-          <span>DissLitClub</span>
-        </a>
-        <nav class="navlinks">
-          <a href="#meetings">Встречи</a>
-          <a href="#archive">Архив</a>
-          <a href="#about">О клубе</a>
-          <a href="#join">Присоединиться</a>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <div class="container hero">
-        <div>
-          <div class="eyebrow">Закрытый книжный клуб · Cyprus</div>
-          <h1>Diss<br />LitClub</h1>
-          <p class="hero-copy">Книги, которые хочется обсуждать. Не пересказывать — спорить, разбирать и перечитывать.</p>
-          <a class="button primary" href="#meetings">Ближайшая встреча</a>
-        </div>
-
-        <article class="hero-card" id="meetings">
-          <img src={upcoming.image} alt={`${upcoming.author} — ${upcoming.title}`} />
-          <div class="eyebrow" style="color: inherit; opacity:.7">{upcoming.eyebrow}</div>
-          <h2>{upcoming.title}</h2>
-          <p>{upcoming.author}</p>
-          <div class="meta">
-            <span>{upcoming.date}</span>
-            <span>{upcoming.location}</span>
-          </div>
-          <a class="button" href="#join">Хочу прийти</a>
-        </article>
-      </div>
-
-      <section id="archive">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <div class="eyebrow">Прошедшие встречи</div>
-              <h2>Архив клуба</h2>
-            </div>
-            <p>Здесь со временем будут видео, презентации, заметки и фотографии каждой встречи.</p>
-          </div>
-
-          <div class="archive-grid">
-            {archive.map((meeting) => (
-              <article class="card">
-                <img src={meeting.image} alt={`${meeting.author} — ${meeting.title}`} />
-                <div class="small">{meeting.date}</div>
-                <h3>{meeting.title}</h3>
-                <div>{meeting.author}</div>
-              </article>
-            ))}
-            <article class="card">
-              <img src="/images/kafka-placeholder.svg" alt="Будущая встреча" />
-              <div class="small">Архив растёт</div>
-              <h3>Следующая книга</h3>
-              <div>Добавим сюда ваши реальные встречи</div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="manifesto" id="about">
-        <div class="container">
-          <div class="eyebrow" style="color:inherit; opacity:.62">Зачем мы собираемся</div>
-          <blockquote>Мы встречаемся не для того, чтобы пересказывать книги. Мы встречаемся, чтобы спорить.</blockquote>
-          <p>DissLitClub — камерный книжный клуб на Кипре. Каждая встреча посвящена одной книге, автору или идее. Архив сайта постепенно станет цифровой библиотекой клуба.</p>
-        </div>
-      </section>
-
-      <section id="join">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <div class="eyebrow">Join the club</div>
-              <h2>Присоединиться</h2>
-            </div>
-            <a class="button primary" href="mailto:hello@disslit.club">Написать нам</a>
-          </div>
-          <p>Пока домен и почта не подключены, эту кнопку можно заменить на Telegram, Instagram или форму заявки.</p>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="container footer-grid">
-        <span>© 2026 DissLitClub</span>
-        <span>Limassol · Cyprus</span>
-      </div>
-    </footer>
-  </body>
-</html>
+<html lang="ru"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><title>DissLitClub — закрытый книжный клуб в Лимассоле</title><meta name="description" content="DissLitClub — закрытый книжный клуб в Лимассоле. С 2020 года встречаемся раз в три недели. Участие по приглашению."/></head><body>
+<Header/>
+<main class="wrap">
+<section class="hero"><div><div class="eyebrow">DissLitClub · Limassol · Cyprus · since 2020</div><h1>Усилие<br/>без насилия.</h1><p>Закрытый книжный клуб в Лимассоле.</p></div><div class="hero-note">С 2020 года встречаемся раз в три недели.<br/>Участие по приглашению.</div></section>
+<section class="stats"><div class="stat"><strong>2020</strong><span>основан клуб</span></div><div class="stat"><strong>7</strong><span>сезонов</span></div><div class="stat"><strong>{count}+</strong><span>зафиксированных встреч</span></div><div class="stat"><strong>3</strong><span>недели между встречами</span></div></section>
+<section class="section" id="authors"><div class="section-head"><h2>Авторы × DissLitClub</h2><p>Личные встречи, разговоры с клубом и коммуникации с авторами вокруг наших презентаций.</p></div><div class="author-grid">{authorEvents.map((m,i)=><a class="author-card" href={`/meeting/${m.slug}`}><span class="num">0{i+1} / AUTHOR</span><div><h3>{m.author}</h3><p>«{m.title}»</p></div><small>{m.authorEvent}</small></a>)}</div></section>
+<section class="section" id="archive"><div class="section-head"><h2>Архив сезонов</h2><p>Каждая книга ведёт на отдельную страницу встречи. Даты, оценки и материалы можно добавлять постепенно.</p></div><div class="season-grid">{seasons.map(s=><a class="season-card" href={`/season/${s.id}`}><strong>0{s.id}</strong><span>{s.years}</span><em>{s.meetings.length} встреч</em></a>)}</div></section>
+<section class="section" id="beyond"><div class="section-head"><h2>За пределами текста</h2><p>Клуб существует не только между страницами.</p></div><div class="beyond"><div class="feature"><div class="eyebrow">Theatre</div><h3>Театр</h3><p>Совместные походы клуба в театр. Архив спектаклей, дат и фотографий добавим следующим этапом.</p></div><div class="feature"><div class="eyebrow">Film club</div><h3>Киноклуб</h3><p>Кино как продолжение разговора: отдельные встречи клуба вокруг фильмов и экранизаций.</p></div><div class="feature"><div class="eyebrow">Special events</div><h3>Специальные события</h3><p>Авторские встречи, разговоры и другие события вокруг литературы.</p></div></div></section>
+<section class="section"><div class="current"><div><div class="eyebrow">Сейчас в клубе · 07 / 01</div><h3>16.09</h3><p>Открытие седьмого сезона</p></div><div><div class="book">Фёдор Достоевский<br/><strong>«Бесы»</strong></div><p style="margin:25px 0"><a class="back" href="/meeting/s7-бесы">О встрече →</a></p></div></div></section>
+</main><footer class="footer wrap"><span>© 2026 DissLitClub · Limassol, Cyprus</span><span>RU · EN — English version in progress</span></footer>
+</body></html>

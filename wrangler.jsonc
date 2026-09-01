@@ -1,7 +1,5 @@
 {
   "name": "disslitclub",
   "compatibility_date": "2026-08-31",
-  "assets": {
-    "directory": "./dist"
-  }
+  "assets": { "directory": "./dist" }
 }

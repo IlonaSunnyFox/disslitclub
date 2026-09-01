@@ -23,21 +23,66 @@ const list=meetings.filter(m=>m.season===season.id);
 
   <section class="season-catalog" aria-label={`Встречи сезона ${season.id}`}>
     {list.map((m,i)=><a class="meeting-card" href={`/meeting/${m.slug}`}>
-      <div class="meeting-card-top">
-        <span class="meeting-no">{String(i+1).padStart(2,'0')}</span>
-        <div class="meeting-marks">
-          {m.authorEvent&&<span>Автор × DLC</span>}
-          {m.youtube&&<span>Видео</span>}
-          {m.date&&<span>{m.date}</span>}
+      <div class="meeting-cover-shell">
+        <div class="meeting-cover-fallback" aria-hidden="true">
+          <span>{m.author}</span>
+          <strong>{quoteBookTitle(m.title)}</strong>
         </div>
+        <img
+          class="meeting-cover"
+          data-book-cover
+          data-title={m.title.split(' / ')[0].replace(/[«»]/g,'')}
+          data-author={m.author.split(' / ')[0]}
+          alt={`Обложка книги ${quoteBookTitle(m.title)}`}
+          loading="lazy"
+        />
       </div>
-      <div class="meeting-card-body">
-        <h2>{quoteBookTitle(m.title)}</h2>
-        <p>{m.author}</p>
+      <div class="meeting-card-content">
+        <div class="meeting-card-top">
+          <span class="meeting-no">{String(i+1).padStart(2,'0')}</span>
+          <div class="meeting-marks">
+            {m.authorEvent&&<span>Автор × DLC</span>}
+            {m.youtube&&<span>Видео</span>}
+            {m.date&&<span>{m.date}</span>}
+          </div>
+        </div>
+        <div class="meeting-card-body">
+          <h2>{quoteBookTitle(m.title)}</h2>
+          <p>{m.author}</p>
+        </div>
+        <div class="meeting-card-arrow">Открыть встречу <span>↗</span></div>
       </div>
-      <div class="meeting-card-arrow">Открыть встречу <span>↗</span></div>
     </a>)}
   </section>
+  <script>
+    const covers = document.querySelectorAll('[data-book-cover]');
+    const loadCover = async (img) => {
+      if (img.dataset.loaded) return;
+      img.dataset.loaded = '1';
+      const title = img.dataset.title || '';
+      const author = img.dataset.author || '';
+      try {
+        const endpoint = `https://bookcover.longitood.com/bookcover?book_title=${encodeURIComponent(title)}&author_name=${encodeURIComponent(author)}&image_size=medium`;
+        const response = await fetch(endpoint);
+        if (!response.ok) throw new Error('cover not found');
+        const data = await response.json();
+        if (!data.url) throw new Error('cover not found');
+        img.src = data.url;
+        img.addEventListener('load', () => img.classList.add('is-loaded'), {once:true});
+      } catch (_) {
+        img.remove();
+      }
+    };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadCover(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {rootMargin:'300px'});
+    covers.forEach(img => observer.observe(img));
+  </script>
 </main>
 </body>
 </html>

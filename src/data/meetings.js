@@ -24,6 +24,7 @@ Object.assign(byTitle('Кремулятор'), {authorEvent:'Личная вст
 Object.assign(byTitle('Суть вещи'), {authorEvent:'Личная встреча с автором в клубе'});
 Object.assign(byTitle('Странная Салли Даймонд'), {authorEvent:'Онлайн-встреча всего клуба с автором'});
 Object.assign(byTitle('Табия 32'), {authorEvent:'Разговор с автором при подготовке презентации — Катя Грузинова'});
+Object.assign(byTitle('На солнечной стороне улицы'), {authorEvent:'Личная встреча с автором в клубе'});
 
 export const extraMedia = [];
-export const authorEvents = [byTitle('Кремулятор'),byTitle('Суть вещи'),byTitle('Странная Салли Даймонд'),byTitle('Табия 32')];
+export const authorEvents = [byTitle('Кремулятор'),byTitle('Суть вещи'),byTitle('Странная Салли Даймонд'),byTitle('Табия 32'),byTitle('На солнечной стороне улицы')];

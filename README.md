@@ -1,26 +1,8 @@
-# DissLitClub v2
+# DissLitClub v8
 
-Astro static site for Cloudflare Workers static assets.
-
-## Cloudflare
-Build command: `npm run build`
-Deploy command: `npx wrangler deploy`
-
-## Content
-All meeting data lives in `src/data/meetings.js`.
-- Add `date`, `scores`, `youtube`, presentation path and photos there as the archive is restored.
-- Each known meeting already has a generated clickable page.
-- `Тревожные люди` — Фредрик Бакман is in Season 4, dated 17.04.2024, with its YouTube presentation linked.
-
-## Local
-`npm install`
-`npm run dev`
-
-
-## v6
-- Isadora Cyr is loaded remotely for the hero slogan.
-- Hero photo now dissolves gradually into the paper from farther left.
-- Hero statistics are returned to normal document flow to prevent overlap.
-
-## v7
-Main UI font: Zector. Hero script: Vivaldi Script.
+Changes from v7:
+- Kalissa for the “Усилие без насилия” hero line.
+- Hero photo spans the full hero under the text and dissolves through a much wider, softer mask/gradient so no left photo edge is visible.
+- Added the offline author meeting with Дина Рубина (“На солнечной стороне улицы”).
+- Author interaction counter updated from 4 to 5.
+- Existing book covers, hover animation, archive, typography and page structure preserved.

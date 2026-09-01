@@ -1,7 +1,14 @@
----
-const {active=''}=Astro.props;
----
 <header class="site-header wrap">
- <a class="brand" href="/"><img src="/images/logo.png" alt="DissLitClub logo"/><span>DissLitClub</span></a>
- <nav><a href="/#authors">Авторы × DLC</a><a href="/#archive">Архив</a><a href="/#beyond">За пределами текста</a><a href="/media">Медиа</a><span class="lang">RU · EN</span></nav>
+  <a class="brand" href="/" aria-label="DissLitClub — на главную">
+    <img src="/images/logo.png" alt="DissLitClub" />
+    <span>DissLitClub</span>
+  </a>
+  <nav aria-label="Основная навигация">
+    <a href="/#about">О клубе</a>
+    <a href="/#authors">Авторы × DissLitClub</a>
+    <a href="/#archive">Архив сезонов</a>
+    <a href="/#beyond">За пределами текста</a>
+    <a href="/media">Медиа</a>
+    <span class="lang">RU&nbsp;&nbsp;/&nbsp;&nbsp;EN</span>
+  </nav>
 </header>

@@ -1,0 +1,111 @@
+---
+import "../styles/global.css";
+import { meetings } from "../data/meetings.js";
+const upcoming = meetings[0];
+const archive = meetings.slice(1);
+---
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="DissLitClub — закрытый книжный клуб на Кипре." />
+    <title>DissLitClub — книжный клуб на Кипре</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a class="brand" href="/">
+          <img src="/images/disslit-logo.png" alt="DissLitClub" />
+          <span>DissLitClub</span>
+        </a>
+        <nav class="navlinks">
+          <a href="#meetings">Встречи</a>
+          <a href="#archive">Архив</a>
+          <a href="#about">О клубе</a>
+          <a href="#join">Присоединиться</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container hero">
+        <div>
+          <div class="eyebrow">Закрытый книжный клуб · Cyprus</div>
+          <h1>Diss<br />LitClub</h1>
+          <p class="hero-copy">Книги, которые хочется обсуждать. Не пересказывать — спорить, разбирать и перечитывать.</p>
+          <a class="button primary" href="#meetings">Ближайшая встреча</a>
+        </div>
+
+        <article class="hero-card" id="meetings">
+          <img src={upcoming.image} alt={`${upcoming.author} — ${upcoming.title}`} />
+          <div class="eyebrow" style="color: inherit; opacity:.7">{upcoming.eyebrow}</div>
+          <h2>{upcoming.title}</h2>
+          <p>{upcoming.author}</p>
+          <div class="meta">
+            <span>{upcoming.date}</span>
+            <span>{upcoming.location}</span>
+          </div>
+          <a class="button" href="#join">Хочу прийти</a>
+        </article>
+      </div>
+
+      <section id="archive">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Прошедшие встречи</div>
+              <h2>Архив клуба</h2>
+            </div>
+            <p>Здесь со временем будут видео, презентации, заметки и фотографии каждой встречи.</p>
+          </div>
+
+          <div class="archive-grid">
+            {archive.map((meeting) => (
+              <article class="card">
+                <img src={meeting.image} alt={`${meeting.author} — ${meeting.title}`} />
+                <div class="small">{meeting.date}</div>
+                <h3>{meeting.title}</h3>
+                <div>{meeting.author}</div>
+              </article>
+            ))}
+            <article class="card">
+              <img src="/images/kafka-placeholder.svg" alt="Будущая встреча" />
+              <div class="small">Архив растёт</div>
+              <h3>Следующая книга</h3>
+              <div>Добавим сюда ваши реальные встречи</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="manifesto" id="about">
+        <div class="container">
+          <div class="eyebrow" style="color:inherit; opacity:.62">Зачем мы собираемся</div>
+          <blockquote>Мы встречаемся не для того, чтобы пересказывать книги. Мы встречаемся, чтобы спорить.</blockquote>
+          <p>DissLitClub — камерный книжный клуб на Кипре. Каждая встреча посвящена одной книге, автору или идее. Архив сайта постепенно станет цифровой библиотекой клуба.</p>
+        </div>
+      </section>
+
+      <section id="join">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Join the club</div>
+              <h2>Присоединиться</h2>
+            </div>
+            <a class="button primary" href="mailto:hello@disslit.club">Написать нам</a>
+          </div>
+          <p>Пока домен и почта не подключены, эту кнопку можно заменить на Telegram, Instagram или форму заявки.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-grid">
+        <span>© 2026 DissLitClub</span>
+        <span>Limassol · Cyprus</span>
+      </div>
+    </footer>
+  </body>
+</html>

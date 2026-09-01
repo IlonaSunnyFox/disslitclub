@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200">
+<rect width="900" height="1200" fill="#7D0E13"/>
+<rect x="48" y="48" width="804" height="1104" fill="none" stroke="#F3E9D2" stroke-width="2"/>
+<text x="80" y="120" fill="#F3E9D2" font-size="32" font-family="Georgia, serif" letter-spacing="4">ФРАНЦ КАФКА</text>
+<text x="80" y="1030" fill="#F3E9D2" font-size="78" font-family="Georgia, serif">ПРОЦЕСС</text>
+<path d="M230 580 C330 530 415 535 450 600 C485 535 570 530 670 580 L650 740 C560 710 500 725 450 780 C400 725 340 710 250 740 Z" fill="none" stroke="#F3E9D2" stroke-width="8"/>
+<path d="M450 600 L450 780" stroke="#F3E9D2" stroke-width="6"/>
+<path d="M260 820 C355 795 545 795 640 820 M300 860 C375 842 525 842 600 860 M350 900 C405 890 495 890 550 900" fill="none" stroke="#F3E9D2" stroke-width="4" stroke-linecap="round"/>
+</svg>

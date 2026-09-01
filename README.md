@@ -21,3 +21,6 @@ All meeting data lives in `src/data/meetings.js`.
 - Isadora Cyr is loaded remotely for the hero slogan.
 - Hero photo now dissolves gradually into the paper from farther left.
 - Hero statistics are returned to normal document flow to prevent overlap.
+
+## v7
+Main UI font: Zector. Hero script: Vivaldi Script.

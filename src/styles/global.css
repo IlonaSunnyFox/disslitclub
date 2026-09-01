@@ -145,3 +145,34 @@
   .hero-photo{width:100%;right:auto}
   .hero-copy h1{font-size:clamp(64px,12vw,96px);line-height:1}
 }
+
+/* v7: Zector site typography + Vivaldi hero */
+@font-face{
+  font-family:'Zector Remote';
+  src:url('https://media.uprock.school/fonts/Zector/Zector.ttf') format('truetype');
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+@font-face{
+  font-family:'Vivaldi Script Remote';
+  src:url('https://media.uprock.school/fonts/Vivaldi_Script/Vivaldi%20script.ttf') format('truetype');
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+:root{
+  --serif:'Zector Remote','Arial Narrow','Helvetica Neue',Arial,sans-serif;
+  --sans:'Zector Remote','Arial Narrow','Helvetica Neue',Arial,sans-serif;
+  --script:'Vivaldi Script Remote','Apple Chancery','Segoe Script',cursive;
+}
+body{font-family:var(--serif)}
+.hero-copy h1{
+  font-family:var(--script);
+  font-size:clamp(72px,6.15vw,112px);
+  line-height:1.02;
+  letter-spacing:0;
+  transform:none;
+  margin:6px 0 28px;
+  max-width:760px;
+}

@@ -317,3 +317,12 @@ body{font-family:var(--serif)}
   letter-spacing:0;
   transform:none;
 }
+
+/* v9: Passions Conflict RUS for hero phrase only */
+@font-face{
+ font-family:'Passions Conflict RUS Remote';
+ src:url('https://media.uprock.school/fonts/Passions_Conflict_RUS/PassionsConflictRUS-Regular.otf') format('opentype');
+ font-weight:400;font-style:normal;font-display:swap;
+}
+:root{--script:'Passions Conflict RUS Remote','Apple Chancery','Segoe Script',cursive}
+.hero-copy h1{font-family:var(--script);font-weight:400;font-style:normal}

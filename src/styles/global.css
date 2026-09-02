@@ -606,3 +606,98 @@ header .nav-inner{
     grid-template-columns:1fr !important;
   }
 }
+
+/* v9 mobile: keep the hero photograph underneath the text */
+@media(max-width:980px){
+  .hero-home{
+    position:relative !important;
+    display:block !important;
+    overflow:hidden !important;
+    min-height:760px !important;
+  }
+  .hero-copy{
+    position:relative !important;
+    z-index:3 !important;
+    width:100% !important;
+    min-height:760px !important;
+    padding-bottom:34px !important;
+  }
+  .hero-photo{
+    position:absolute !important;
+    z-index:1 !important;
+    inset:0 !important;
+    width:100% !important;
+    height:100% !important;
+    min-height:0 !important;
+    margin:0 !important;
+  }
+  .hero-photo img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    object-position:center top !important;
+    filter:none !important;
+    -webkit-mask-image:linear-gradient(90deg,
+      transparent 0%,
+      rgba(0,0,0,.02) 14%,
+      rgba(0,0,0,.08) 27%,
+      rgba(0,0,0,.20) 40%,
+      rgba(0,0,0,.40) 53%,
+      rgba(0,0,0,.64) 66%,
+      rgba(0,0,0,.84) 79%,
+      #000 92%) !important;
+    mask-image:linear-gradient(90deg,
+      transparent 0%,
+      rgba(0,0,0,.02) 14%,
+      rgba(0,0,0,.08) 27%,
+      rgba(0,0,0,.20) 40%,
+      rgba(0,0,0,.40) 53%,
+      rgba(0,0,0,.64) 66%,
+      rgba(0,0,0,.84) 79%,
+      #000 92%) !important;
+  }
+  .hero-photo:before{
+    display:block !important;
+    background:linear-gradient(90deg,
+      rgba(243,236,222,1) 0%,
+      rgba(243,236,222,.98) 18%,
+      rgba(243,236,222,.90) 34%,
+      rgba(243,236,222,.70) 50%,
+      rgba(243,236,222,.42) 66%,
+      rgba(243,236,222,.16) 80%,
+      transparent 94%) !important;
+  }
+}
+
+/* Responsive author row: number of visible cards is determined by available width */
+.authors-home{
+  display:grid !important;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr)) !important;
+  gap:18px !important;
+  overflow:hidden;
+  max-height:420px;
+}
+.authors-home.is-open{
+  max-height:none;
+}
+.author-events-toggle{
+  display:inline-block;
+  margin-top:16px;
+}
+@media(max-width:760px){
+  .authors-home{
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr)) !important;
+    gap:12px !important;
+    max-height:390px;
+  }
+}
+
+/* v9: abstract season artwork */
+.season-art{
+  display:block;
+  width:100%;
+  aspect-ratio:191/353;
+  object-fit:cover;
+  border-radius:8px;
+  margin-bottom:14px;
+}

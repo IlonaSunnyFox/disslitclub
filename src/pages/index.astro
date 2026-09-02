@@ -4,8 +4,7 @@ import {seasons, meetings, authorEvents} from '../data/meetings.js';
 import '../styles/global.css';
 
 const sortedAuthorEvents = [...authorEvents].sort((a,b) => Number(Boolean(b.image)) - Number(Boolean(a.image)));
-const authorEventsFirstRow = sortedAuthorEvents.slice(0,5);
-const authorEventsRest = sortedAuthorEvents.slice(5);
+
 ---
 <html lang="ru">
 <head>
@@ -44,32 +43,17 @@ const authorEventsRest = sortedAuthorEvents.slice(5);
         <a href="#authors">Все встречи с авторами →</a>
       </div>
       <div class="authors-home">
-        {authorEventsFirstRow.map((m) =>
+        {sortedAuthorEvents.map((m) =>
           <a class="author-home-card" href={m.href || `/meeting/${m.slug}`}>
             {m.image && <img class="author-home-photo" src={m.image} alt="" loading="lazy" />}
             <div class="author-home-name">{m.author}</div>
+      <button class="author-events-toggle" type="button" aria-expanded="false">Все встречи</button>
             <div class="author-home-book">{m.title === 'Творческая встреча' || m.title === 'Закрытая лекция с режиссером' ? m.title : `«${m.title}»`}</div>
             <div class="author-home-event">{m.authorEvent}</div>
             <div class="author-home-season">{m.date || (m.season ? `${m.season} сезон` : '')}</div>
           </a>
         )}
-        {authorEventsRest.length > 0 && (
-          <>
-            <div class="author-events-more" id="author-events-more">
-              {authorEventsRest.map((m) =>
-                <a class="author-home-card" href={m.href || `/meeting/${m.slug}`}>
-                  {m.image && <img class="author-home-photo" src={m.image} alt="" loading="lazy" />}
-                  <div class="author-home-name">{m.author}</div>
-                  <div class="author-home-book">{m.title === 'Творческая встреча' || m.title === 'Закрытая лекция с режиссером' ? m.title : `«${m.title}»`}</div>
-                  <div class="author-home-event">{m.authorEvent}</div>
-                  <div class="author-home-season">{m.date || (m.season ? `${m.season} сезон` : '')}</div>
-                </a>
-              )}
-            </div>
-            <button class="author-events-toggle" type="button" aria-controls="author-events-more" aria-expanded="false">Все встречи</button>
-          </>
-        )}
-      </div>
+</div>
     </section>
 <section class="current-mini wrap">
       <div><span>Сейчас в клубе</span><strong>07 / 01</strong></div>
@@ -86,6 +70,7 @@ const authorEventsRest = sortedAuthorEvents.slice(5);
       <div class="season-strip">
         {seasons.map((s) =>
           <a class={`season-tile season-${s.id}`} href={`/season/${s.id}`}>
+            <img class="season-art" src={`/images/seasons/season-${s.id}.jpg`} alt="" loading="lazy" />
             <div class="season-number">0{s.id}</div>
             <div class="season-years">{s.years.replace('–',' / ')}</div>
             <div class="season-visual" aria-hidden="true"><span>{s.id === 7 ? 'текущий сезон' : `${s.meetings.length} встреч`}</span></div>
@@ -118,10 +103,10 @@ const authorEventsRest = sortedAuthorEvents.slice(5);
 <script is:inline data-author-events-toggle-script>
   document.addEventListener('DOMContentLoaded', () => {
     const btn = document.querySelector('.author-events-toggle');
-    const more = document.querySelector('.author-events-more');
-    if (!btn || !more) return;
+    const grid = document.querySelector('.authors-home');
+    if (!btn || !grid) return;
     btn.addEventListener('click', () => {
-      const open = more.classList.toggle('is-open');
+      const open = grid.classList.toggle('is-open');
       btn.setAttribute('aria-expanded', String(open));
       btn.textContent = open ? 'Скрыть' : 'Все встречи';
     });

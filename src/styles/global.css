@@ -342,10 +342,6 @@ body{font-family:var(--serif)}
 }
 
 /* v9 requested adjustments */
-.hero-copy .hero-subtitle,
-.hero-copy > p:first-of-type{
-  margin-top:56px;
-}
 
 .author-events-more{
   display:none;
@@ -369,4 +365,9 @@ body{font-family:var(--serif)}
 }
 @media (max-width:900px){
   .author-events-more.is-open{grid-template-columns:1fr}
+}
+
+/* v9 fix: move the actual subtitle below the oversized handwritten title */
+.hero-copy h2{
+  margin-top:96px;
 }

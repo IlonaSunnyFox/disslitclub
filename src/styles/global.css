@@ -371,3 +371,11 @@ body{font-family:var(--serif)}
 .hero-copy h2{
   margin-top:96px;
 }
+
+/* v9: slightly more compact top header only */
+header .nav{
+  min-height:64px;
+}
+header .nav-inner{
+  min-height:64px;
+}

@@ -23,7 +23,7 @@ import '../styles/global.css';
           <div><strong>7</strong><span>сезонов</span></div>
           <div><strong>60+</strong><span>встреч</span></div>
           <div><strong>60+</strong><span>книг</span></div>
-          <div><strong>5</strong><span>коммуникаций<br/>с авторами</span></div>
+          <div><strong>6</strong><span>коммуникаций<br/>с авторами</span></div>
           <div><strong>раз в <b>3</b> недели</strong><span>встречаемся</span></div>
         </div>
       </div>
@@ -39,11 +39,12 @@ import '../styles/global.css';
       </div>
       <div class="authors-home">
         {authorEvents.map((m) =>
-          <a class="author-home-card" href={`/meeting/${m.slug}`}>
+          <a class="author-home-card" href={m.href || `/meeting/${m.slug}`}>
+            {m.image && <img class="author-home-photo" src={m.image} alt="" loading="lazy" />}
             <div class="author-home-name">{m.author}</div>
-            <div class="author-home-book">«{m.title}»</div>
+            <div class="author-home-book">{m.title === 'Творческая встреча' ? m.title : `«${m.title}»`}</div>
             <div class="author-home-event">{m.authorEvent}</div>
-            <div class="author-home-season">{m.season} сезон</div>
+            <div class="author-home-season">{m.date || `${m.season} сезон`}</div>
           </a>
         )}
       </div>

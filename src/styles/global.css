@@ -326,3 +326,11 @@ body{font-family:var(--serif)}
 }
 :root{--script:'Passions Conflict RUS Remote','Apple Chancery','Segoe Script',cursive}
 .hero-copy h1{font-family:var(--script);font-weight:400;font-style:normal}
+
+.author-home-photo{
+  width:calc(100% + 40px);
+  height:180px;
+  object-fit:cover;
+  display:block;
+  margin:-22px -20px 18px;
+}

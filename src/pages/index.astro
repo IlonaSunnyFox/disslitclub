@@ -4,8 +4,8 @@ import {seasons, meetings, authorEvents} from '../data/meetings.js';
 import '../styles/global.css';
 
 const sortedAuthorEvents = [...authorEvents].sort((a,b) => Number(Boolean(b.image)) - Number(Boolean(a.image)));
-const authorEventsFirstRow = sortedAuthorEvents.slice(0,4);
-const authorEventsRest = sortedAuthorEvents.slice(4);
+const authorEventsFirstRow = sortedAuthorEvents.slice(0,5);
+const authorEventsRest = sortedAuthorEvents.slice(5);
 ---
 <html lang="ru">
 <head>

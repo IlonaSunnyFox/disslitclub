@@ -580,3 +580,29 @@ header .nav-inner{
   backdrop-filter:none !important;
   -webkit-backdrop-filter:none !important;
 }
+
+/* v9: use the upper part of the existing hero photo */
+.hero-photo img{
+  object-position:center top !important;
+}
+
+/* v9: five author cards in the visible row */
+.authors-home{
+  grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+}
+.author-events-more.is-open{
+  grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+}
+
+@media(max-width:1100px){
+  .authors-home,
+  .author-events-more.is-open{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  }
+}
+@media(max-width:700px){
+  .authors-home,
+  .author-events-more.is-open{
+    grid-template-columns:1fr !important;
+  }
+}

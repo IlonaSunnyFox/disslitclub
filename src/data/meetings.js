@@ -40,5 +40,12 @@ export const authorEvents = [
     date:'27.05.2025',
     image:'/images/authors/vladimir-sorokin-2025-05-27.jpg',
     href:'#authors'
+  },
+  {
+    author:'Борис Павлович',
+    title:'Закрытая лекция с режиссером',
+    authorEvent:'Закрытая лекция',
+    image:'/images/authors/boris-pavlovich.jpeg',
+    href:'#authors'
   }
 ];

@@ -2,6 +2,10 @@
 import Header from '../components/Header.astro';
 import {seasons, meetings, authorEvents} from '../data/meetings.js';
 import '../styles/global.css';
+
+const sortedAuthorEvents = [...authorEvents].sort((a,b) => Number(Boolean(b.image)) - Number(Boolean(a.image)));
+const authorEventsFirstRow = sortedAuthorEvents.slice(0,4);
+const authorEventsRest = sortedAuthorEvents.slice(4);
 ---
 <html lang="ru">
 <head>
@@ -38,14 +42,30 @@ import '../styles/global.css';
         <a href="#authors">Все встречи с авторами →</a>
       </div>
       <div class="authors-home">
-        {authorEvents.map((m) =>
+        {authorEventsFirstRow.map((m) =>
           <a class="author-home-card" href={m.href || `/meeting/${m.slug}`}>
             {m.image && <img class="author-home-photo" src={m.image} alt="" loading="lazy" />}
             <div class="author-home-name">{m.author}</div>
-            <div class="author-home-book">{m.title === 'Творческая встреча' ? m.title : `«${m.title}»`}</div>
+            <div class="author-home-book">{m.title === 'Творческая встреча' || m.title === 'Закрытая лекция с режиссером' ? m.title : `«${m.title}»`}</div>
             <div class="author-home-event">{m.authorEvent}</div>
-            <div class="author-home-season">{m.date || `${m.season} сезон`}</div>
+            <div class="author-home-season">{m.date || (m.season ? `${m.season} сезон` : '')}</div>
           </a>
+        )}
+        {authorEventsRest.length > 0 && (
+          <>
+            <div class="author-events-more" id="author-events-more">
+              {authorEventsRest.map((m) =>
+                <a class="author-home-card" href={m.href || `/meeting/${m.slug}`}>
+                  {m.image && <img class="author-home-photo" src={m.image} alt="" loading="lazy" />}
+                  <div class="author-home-name">{m.author}</div>
+                  <div class="author-home-book">{m.title === 'Творческая встреча' || m.title === 'Закрытая лекция с режиссером' ? m.title : `«${m.title}»`}</div>
+                  <div class="author-home-event">{m.authorEvent}</div>
+                  <div class="author-home-season">{m.date || (m.season ? `${m.season} сезон` : '')}</div>
+                </a>
+              )}
+            </div>
+            <button class="author-events-toggle" type="button" aria-controls="author-events-more" aria-expanded="false">Все встречи</button>
+          </>
         )}
       </div>
     </section>
@@ -92,3 +112,16 @@ import '../styles/global.css';
   <footer class="footer wrap"><span>© 2026 DissLitClub · Лимассол, Кипр</span><span>RU / EN</span></footer>
 </body>
 </html>
+
+<script is:inline data-author-events-toggle-script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.querySelector('.author-events-toggle');
+    const more = document.querySelector('.author-events-more');
+    if (!btn || !more) return;
+    btn.addEventListener('click', () => {
+      const open = more.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Скрыть' : 'Все встречи';
+    });
+  });
+</script>

@@ -47,13 +47,13 @@ const sortedAuthorEvents = [...authorEvents].sort((a,b) => Number(Boolean(b.imag
           <a class="author-home-card" href={m.href || `/meeting/${m.slug}`}>
             {m.image && <img class="author-home-photo" src={m.image} alt="" loading="lazy" />}
             <div class="author-home-name">{m.author}</div>
-      <button class="author-events-toggle" type="button" aria-expanded="false">Все встречи</button>
             <div class="author-home-book">{m.title === 'Творческая встреча' || m.title === 'Закрытая лекция с режиссером' ? m.title : `«${m.title}»`}</div>
             <div class="author-home-event">{m.authorEvent}</div>
             <div class="author-home-season">{m.date || (m.season ? `${m.season} сезон` : '')}</div>
           </a>
         )}
 </div>
+      <button class="author-events-toggle" type="button" aria-expanded="false">Все встречи</button>
     </section>
 <section class="current-mini wrap">
       <div><span>Сейчас в клубе</span><strong>07 / 01</strong></div>
@@ -85,13 +85,13 @@ const sortedAuthorEvents = [...authorEvents].sort((a,b) => Number(Boolean(b.imag
       </div>
       <div class="beyond-home">
         <a class="beyond-card theatre" href="/beyond/theatre">
-          <span class="beyond-icon">◐</span><div><h3>Театр</h3><p>Наши походы в театр и обсуждения спектаклей.</p></div>
+          <span class="beyond-icon"><img src="/images/beyond/theatre.webp" alt="" /></span><div><h3>Театр</h3><p>Наши походы в театр и обсуждения спектаклей.</p></div>
         </a>
         <a class="beyond-card cinema" href="/beyond/cinema">
-          <span class="beyond-icon">▰</span><div><h3>Киноклуб</h3><p>Отдельные кинопросмотры и обсуждения.</p></div>
+          <span class="beyond-icon"><img src="/images/beyond/cinema.webp" alt="" /></span><div><h3>Киноклуб</h3><p>Отдельные кинопросмотры и обсуждения.</p></div>
         </a>
         <a class="beyond-card events" href="/beyond/events">
-          <span class="beyond-icon">✶</span><div><h3>Специальные события</h3><p>Лекции, дискуссии и особые встречи.</p></div>
+          <span class="beyond-icon"><img src="/images/beyond/events.webp" alt="" /></span><div><h3>Специальные события</h3><p>Лекции, дискуссии и особые встречи.</p></div>
         </a>
       </div>
     </section>

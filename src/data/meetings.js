@@ -24,7 +24,7 @@ Object.assign(byTitle('Кремулятор'), {authorEvent:'Личная вст
 Object.assign(byTitle('Суть вещи'), {authorEvent:'Личная встреча с автором в клубе', image:'/images/authors/alena-aleksina.png'});
 Object.assign(byTitle('Странная Салли Даймонд'), {authorEvent:'Онлайн-встреча всего клуба с автором'});
 Object.assign(byTitle('Табия 32'), {authorEvent:'Разговор с автором при подготовке презентации — Катя Грузинова'});
-Object.assign(byTitle('На солнечной стороне улицы'), {authorEvent:'Личная встреча с автором в клубе'});
+Object.assign(byTitle('На солнечной стороне улицы'), {authorEvent:'Личная встреча с автором в клубе', image:'/images/authors/dina-rubina.jpeg'});
 
 export const extraMedia = [];
 export const authorEvents = [

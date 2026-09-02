@@ -334,3 +334,9 @@ body{font-family:var(--serif)}
   display:block;
   margin:-22px -20px 18px;
 }
+
+/* v9: requested hero size/spacing adjustment only */
+.hero-copy h1{
+  font-size:clamp(144px,12vw,220px);
+  line-height:.58;
+}

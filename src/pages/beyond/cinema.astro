@@ -1,4 +1,9 @@
 ---
 import Header from '../../components/Header.astro'; import '../../styles/global.css';
+const films = [
+  {title:'Бедные несчастные', director:'Йоргос Лантимос'},
+  {title:'Весна, лето, осень, зима и опять весна', director:'Ким Ки Дук'},
+  {title:'Ходячий замок', director:'Хаяо Миядзаки'},
+];
 ---
-<html lang="ru"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Киноклуб — DissLitClub</title></head><body><Header/><main class="wrap"><section class="page-title"><a class="back" href="/#beyond">← За пределами текста</a><h1>Киноклуб</h1><p>Архив отдельных кинопросмотров и обсуждений DissLitClub. Фильмы и даты будем добавлять постепенно.</p></section></main></body></html>
+<html lang="ru"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Киноклуб — DissLitClub</title></head><body><Header/><main class="wrap"><section class="page-title"><a class="back" href="/#beyond">← За пределами текста</a><h1>Киноклуб</h1><p>Архив отдельных кинопросмотров и обсуждений DissLitClub. Фильмы и даты будем добавлять постепенно.</p></section><section class="meeting-list">{films.map((film,i)=><div class="meeting-row"><div class="idx">{String(i+1).padStart(2,'0')}</div><div class="title">«{film.title}»</div><div class="author">{film.director}</div><div class="badge">Киноклуб</div></div>)}</section></main></body></html>

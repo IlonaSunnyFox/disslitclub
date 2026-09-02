@@ -300,3 +300,20 @@ body{font-family:var(--serif)}
 @media(max-width:720px){
   .authors-home{grid-template-columns:1fr}
 }
+
+/* v9: only the hero phrase font changes from v8 */
+@font-face{
+  font-family:'Rozovii Chulok Remote';
+  src:url('https://media.uprock.school/fonts/RozoviiChulok/RozoviiChulok.otf') format('opentype');
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+:root{--script:'Rozovii Chulok Remote','Apple Chancery','Segoe Script',cursive}
+.hero-copy h1{
+  font-family:var(--script);
+  font-weight:400;
+  font-style:normal;
+  letter-spacing:0;
+  transform:none;
+}

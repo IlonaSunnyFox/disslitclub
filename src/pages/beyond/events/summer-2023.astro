@@ -1,0 +1,39 @@
+---
+import Header from '../../../components/Header.astro';
+import '../../../styles/global.css';
+const photos = [
+  ['01','landscape'], ['02','landscape'], ['03','landscape'], ['04','landscape'],
+  ['05','landscape'], ['06','landscape'], ['07','landscape'], ['08','landscape'],
+  ['09','landscape'], ['10','portrait'], ['11','landscape'], ['12','landscape'],
+  ['13','landscape'], ['14','portrait'], ['15','landscape'], ['16','landscape'],
+  ['17','landscape'], ['18','portrait'], ['19','landscape'], ['20','landscape'],
+  ['21','landscape'], ['22','landscape'], ['23','landscape'], ['24','portrait'],
+  ['25','landscape'], ['26','landscape'], ['27','landscape'], ['28','portrait'],
+].map(([id,orientation]) => ({src:`/images/events/summer-2023/${id}.webp`,orientation}));
+---
+<html lang="ru"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Корпоратив · 14.06.2023 — DissLitClub</title>
+<meta name="description" content="Корпоратив DissLitClub · 14 июня 2023" />
+</head><body><Header/><main>
+<section class="event-head wrap">
+<a class="back" href="/beyond/events">← Специальные события</a>
+<div class="event-meta">14.06.2023 · Лимассол</div>
+<h1>Корпоратив<br/><span>14.06.2023</span></h1>
+<p>Летняя встреча DissLitClub вне книжного расписания.</p>
+</section>
+<section class="event-gallery wrap" aria-label="Фотографии корпоратива DissLitClub 14 июня 2023">
+{photos.map((photo,i)=><figure class={`event-shot ${photo.orientation}`}><img src={photo.src} alt="" loading={i<4?'eager':'lazy'} /></figure>)}
+</section>
+</main></body></html>
+<style>
+.event-head{padding-top:52px;padding-bottom:54px;border-bottom:1px solid var(--line)}
+.event-meta{font:12px var(--sans);text-transform:uppercase;letter-spacing:.12em;color:var(--wine);margin:46px 0 12px}
+.event-head h1{font-size:clamp(62px,8.7vw,148px);line-height:.76;font-weight:400;margin:0;letter-spacing:-.045em}.event-head h1 span{color:var(--wine);font-style:italic}
+.event-head p{font:17px/1.5 var(--sans);margin:32px 0 0;max-width:48ch}
+.event-gallery{padding-top:38px;padding-bottom:92px;display:grid;grid-template-columns:repeat(12,1fr);gap:18px;align-items:start}
+.event-shot{margin:0;overflow:hidden;background:#e8dcc8}.event-shot.landscape{grid-column:span 6;aspect-ratio:3/2}.event-shot.portrait{grid-column:span 4;aspect-ratio:2/3}
+.event-shot img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .45s ease}.event-shot:hover img{transform:scale(1.015)}
+@media(max-width:900px){.event-shot.landscape{grid-column:span 12}.event-shot.portrait{grid-column:span 6}}
+@media(max-width:760px){.event-head{padding-top:34px;padding-bottom:38px}.event-meta{margin-top:32px}.event-gallery{grid-template-columns:repeat(2,1fr);gap:10px;padding-top:16px}.event-shot.landscape{grid-column:span 2;aspect-ratio:3/2}.event-shot.portrait{grid-column:span 1;aspect-ratio:2/3}}
+</style>

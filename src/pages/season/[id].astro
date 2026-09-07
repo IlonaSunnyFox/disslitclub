@@ -104,6 +104,10 @@ const seasonFiveCovers = {
       return <a class="meeting-card" href={`/meeting/${m.slug}`}>
       {curatedCovers ? (
         <div class:list={["meeting-cover-shell", {"is-dual": curatedCovers.length > 1}]}>
+          <div class="meeting-cover-fallback" aria-hidden="true">
+            <span>{m.author}</span>
+            <strong>{quoteBookTitle(m.title)}</strong>
+          </div>
           {curatedCovers.map((src, coverIndex) => (
             <img
               class="meeting-cover is-loaded meeting-cover-curated"

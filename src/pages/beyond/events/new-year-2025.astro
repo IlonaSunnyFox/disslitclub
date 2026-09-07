@@ -1,0 +1,31 @@
+---
+import Header from '../../../components/Header.astro';
+import '../../../styles/global.css';
+---
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Корпоратив · New Year 2025 — DissLitClub</title>
+  <meta name="description" content="Корпоратив DissLitClub · New Year 2025" />
+</head>
+<body><Header/><main>
+  <section class="event-head wrap">
+    <a class="back" href="/beyond/events">← Специальные события</a>
+    <div class="event-meta">New Year 2025 · Лимассол</div>
+    <h1>Корпоратив<br/><span>New Year 2025</span></h1>
+    <p>Новогодняя встреча DissLitClub вне книжного расписания.</p>
+  </section>
+  <section class="single-photo wrap" aria-label="Корпоратив DissLitClub New Year 2025">
+    <img src="/images/events/new-year-2025/cover.webp" alt="" />
+  </section>
+</main></body></html>
+<style>
+.event-head{padding-top:52px;padding-bottom:54px;border-bottom:1px solid var(--line)}
+.event-meta{font:12px var(--sans);text-transform:uppercase;letter-spacing:.12em;color:var(--wine);margin:46px 0 12px}
+.event-head h1{font-size:clamp(62px,8.7vw,148px);line-height:.76;font-weight:400;margin:0;letter-spacing:-.045em}
+.event-head h1 span{color:var(--wine);font-style:italic}
+.event-head p{font:17px/1.5 var(--sans);margin:32px 0 0;max-width:48ch}
+.single-photo{padding-top:38px;padding-bottom:92px}
+.single-photo img{display:block;width:100%;height:auto}
+@media(max-width:760px){.event-head{padding-top:34px;padding-bottom:38px}.event-meta{margin-top:32px}.single-photo{padding-top:16px}}
+</style>

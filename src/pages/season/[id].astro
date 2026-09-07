@@ -6,6 +6,22 @@ import '../../styles/global.css';
 export function getStaticPaths(){return seasons.map(s=>({params:{id:String(s.id)},props:{season:s}}))}
 const {season}=Astro.props;
 const list=meetings.filter(m=>m.season===season.id);
+const seasonOneCovers = {
+  1: ['https://imo10.labirint.ru/books/391192/cover.jpg/242-0'],
+  2: [
+    'https://imo10.labirint.ru/books/794336/cover.jpg/242-0',
+    'https://fantlab.ru/images/editions/big/115949?r=1667427082'
+  ],
+  3: ['https://imo10.labirint.ru/books/672589/cover.jpg/242-0'],
+  4: ['https://ic.pics.livejournal.com/victorova_taja/84836790/21335/21335_original.jpg'],
+  5: ['https://imo10.labirint.ru/books/917570/cover.jpg/242-0'],
+  6: ['https://imo10.labirint.ru/books/662256/cover.jpg/242-0'],
+  7: ['https://imo10.labirint.ru/books/765156/cover.jpg/242-0'],
+  8: ['https://www.moscowbooks.ru/image/book/743/orig/i743606.jpg?cu=20220215120501'],
+  9: ['https://www.mann-ivanov-ferber.ru/assets/images/covers/96/16696/2.00x-thumb.png'],
+  10: ['https://imo10.labirint.ru/books/252055/cover.jpg/242-0'],
+  11: ['https://fantlab.ru/images/editions/big/135838?r=1492542840']
+};
 ---
 <html lang="ru">
 <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><title>Сезон {season.id} — DissLitClub</title></head>
@@ -23,20 +39,34 @@ const list=meetings.filter(m=>m.season===season.id);
 
   <section class="season-catalog" aria-label={`Встречи сезона ${season.id}`}>
     {list.map((m,i)=><a class="meeting-card" href={`/meeting/${m.slug}`}>
-      <div class="meeting-cover-shell">
-        <div class="meeting-cover-fallback" aria-hidden="true">
-          <span>{m.author}</span>
-          <strong>{quoteBookTitle(m.title)}</strong>
+      {season.id === 1 && seasonOneCovers[m.number] ? (
+        <div class:list={["meeting-cover-shell", {"is-dual": seasonOneCovers[m.number].length > 1}]}>
+          {seasonOneCovers[m.number].map((src, coverIndex) => (
+            <img
+              class="meeting-cover is-loaded meeting-cover-curated"
+              src={src}
+              alt={seasonOneCovers[m.number].length > 1 ? `Обложка книги ${coverIndex === 0 ? '1984' : 'О дивный новый мир'}` : `Обложка книги ${quoteBookTitle(m.title)}`}
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            />
+          ))}
         </div>
-        <img
-          class="meeting-cover"
-          data-book-cover
-          data-title={m.title.split(' / ')[0].replace(/[«»]/g,'')}
-          data-author={m.author.split(' / ')[0]}
-          alt={`Обложка книги ${quoteBookTitle(m.title)}`}
-          loading="lazy"
-        />
-      </div>
+      ) : (
+        <div class="meeting-cover-shell">
+          <div class="meeting-cover-fallback" aria-hidden="true">
+            <span>{m.author}</span>
+            <strong>{quoteBookTitle(m.title)}</strong>
+          </div>
+          <img
+            class="meeting-cover"
+            data-book-cover
+            data-title={m.title.split(' / ')[0].replace(/[«»]/g,'')}
+            data-author={m.author.split(' / ')[0]}
+            alt={`Обложка книги ${quoteBookTitle(m.title)}`}
+            loading="lazy"
+          />
+        </div>
+      )}
       <div class="meeting-card-content">
         <div class="meeting-card-top">
           <span class="meeting-no">{String(i+1).padStart(2,'0')}</span>

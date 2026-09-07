@@ -706,3 +706,13 @@ header .nav-inner{
 .beyond-icon{width:88px!important;height:88px!important;flex:0 0 88px!important;background:transparent!important;overflow:hidden;}
 .beyond-icon img{display:block;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;}
 @media(max-width:700px){.beyond-icon{width:76px!important;height:76px!important;flex-basis:76px!important;}}
+
+/* Season 1: curated original book covers */
+.meeting-cover-curated{opacity:1!important;}
+.meeting-cover-shell.is-dual{width:142px;}
+.meeting-cover-shell.is-dual .meeting-cover-curated{width:88px;left:50%;right:auto;}
+.meeting-cover-shell.is-dual .meeting-cover-curated:nth-child(1){transform:translateX(-72%) rotate(-4deg);z-index:1;}
+.meeting-cover-shell.is-dual .meeting-cover-curated:nth-child(2){transform:translateX(-28%) rotate(4deg);z-index:2;}
+.meeting-card:hover .meeting-cover-shell.is-dual .meeting-cover-curated:nth-child(1){transform:translateX(-74%) translateY(-6px) rotate(-6deg) scale(1.02);}
+.meeting-card:hover .meeting-cover-shell.is-dual .meeting-cover-curated:nth-child(2){transform:translateX(-26%) translateY(-6px) rotate(6deg) scale(1.02);}
+@media(max-width:800px){.meeting-cover-shell.is-dual{width:116px}.meeting-cover-shell.is-dual .meeting-cover-curated{width:73px;}}

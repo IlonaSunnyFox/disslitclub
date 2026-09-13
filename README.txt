@@ -1,9 +1,9 @@
-DissLitClub cover hotfix
+DissLitClub update — 14.09.2026
 
-Upload ALL contents of this archive into the ROOT of the repository, preserving folders.
-This update changes the build so approved Season 1–5 covers are fetched by Cloudflare during build and then served locally from /images/covers/.
-Files:
-- package.json
-- scripts/fetch-covers.mjs
-- src/data/cover-manifest.js
-- src/pages/season/[id].astro
+Изменения:
+- «Любимчик Эпохи»: автор Катя Качур.
+- Сезон 7, встреча 01: Фёдор Достоевский «Бесы», дата 09.09.2026.
+- Сезон 7, встреча 02: Александр Куприн «Яма», дата 30.09.2026.
+- На главной анонсирована встреча 07/02 — «Яма».
+
+Загрузить содержимое архива в корень репозитория с заменой существующих файлов.

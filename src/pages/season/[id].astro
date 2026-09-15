@@ -71,16 +71,38 @@ const seasonFourCovers = {
 
 const seasonFiveCovers = {
   1: ['/images/covers/season-05/01-liu-three-body.jpg'],
-  2: ['https://bookcover.longitood.com/bookcover?book_title=%D0%A7%D1%83%D0%BC%D0%B0&author_name=%D0%90%D0%BB%D1%8C%D0%B1%D0%B5%D1%80%20%D0%9A%D0%B0%D0%BC%D1%8E&image_size=medium'],
+  2: ['/images/covers/season-05/02-camus-plague.jpg'],
   3: ['/images/covers/season-05/03-binet-seventh-function.jpg'],
   4: ['https://simg.marwin.kz/media/catalog/product/cache/41deb699a7fea062a8915debbbb0442c/f/u/fullimage5_1158.jpg'],
-  5: ['https://bookcover.longitood.com/bookcover?book_title=%D0%9E%D0%B1%D1%8B%D0%BA%D0%BD%D0%BE%D0%B2%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F%20%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F&author_name=%D0%98%D0%B2%D0%B0%D0%BD%20%D0%93%D0%BE%D0%BD%D1%87%D0%B0%D1%80%D0%BE%D0%B2&image_size=medium'],
-  6: ['https://bookcover.longitood.com/bookcover?book_title=%D0%92%D0%B5%D0%B4%D0%B8%20%D1%81%D0%B2%D0%BE%D0%B9%20%D0%BF%D0%BB%D1%83%D0%B3%20%D0%BF%D0%BE%20%D0%BA%D0%BE%D1%81%D1%82%D1%8F%D0%BC%20%D0%BC%D0%B5%D1%80%D1%82%D0%B2%D0%B5%D1%86%D0%BE%D0%B2&author_name=%D0%9E%D0%BB%D1%8C%D0%B3%D0%B0%20%D0%A2%D0%BE%D0%BA%D0%B0%D1%80%D1%87%D1%83%D0%BA&image_size=medium'],
+  5: ['/images/covers/season-05/05-goncharov-ordinary-story.jpg'],
+  6: ['/images/covers/season-05/06-tokarczuk-drive-your-plow.jpg'],
   7: ['https://books.vremya.ru/uploads/posts/2025-06/filipenko_slon_cover_site.jpg'],
-  8: ['https://bookcover.longitood.com/bookcover?book_title=%D0%94%D0%B8%D1%82%D1%8F%20%D1%81%D0%BB%D0%BE%D0%B2%D0%B0&author_name=%D0%90%D0%B9%D1%80%D0%B8%D1%81%20%D0%9C%D1%91%D1%80%D0%B4%D0%BE%D0%BA&image_size=medium'],
+  8: ['/images/covers/season-05/08-murdoch-child-of-word.jpg'],
   9: ['https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1675081683i/90665550.jpg'],
-  10: ['https://bookcover.longitood.com/bookcover?book_title=19%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82&author_name=%D0%94%D0%B6%D0%BE%D0%B4%D0%B8%20%D0%9F%D0%B8%D0%BA%D0%BE%D0%BB%D1%82&image_size=medium'],
+  10: ['/images/covers/season-05/10-picoult-19-minutes.jpg'],
   11: ['/images/covers/season-05/11-konakov-tabia-32.jpg']
+};
+
+const seasonSixCovers = {
+  1: ['/images/covers/season-06/01-mitchell-gone-with-wind.jpg'],
+  2: ['/images/covers/season-06/02-vonnegut-mother-night.jpg'],
+  3: ['/images/covers/season-06/03-nugent-strange-sally-diamond.jpg'],
+  4: ['/images/covers/season-06/04-lem-futurological-congress.jpg'],
+  5: ['/images/covers/season-06/05-weir-project-hail-mary.jpg'],
+  6: ['/images/covers/season-06/06-franzen-crossroads.jpg'],
+  7: ['/images/covers/season-06/07-tolstoy-kreutzer-sonata.jpg'],
+  8: ['/images/covers/season-06/08-dreiser-sister-carrie.jpg'],
+  9: ['/images/covers/season-06/09-hill-wellness.jpg'],
+  10: ['/images/covers/season-06/10-kachur-favorite-of-era.jpg'],
+  11: ['/images/covers/season-06/11-rubina-sunny-side-street.jpg'],
+  12: ['/images/covers/season-06/12-yalom-liar-on-couch.jpg'],
+  13: ['/images/covers/season-06/13-van-pelt-remarkably-bright-creatures.jpg'],
+  14: ['/images/covers/season-06/14-buck-the-good-earth.jpg']
+};
+
+const seasonSevenCovers = {
+  1: ['/images/covers/season-07/01-dostoevsky-demons.jpg'],
+  2: ['/images/covers/season-07/02-kuprin-yama.jpg']
 };
 
 ---
@@ -100,7 +122,7 @@ const seasonFiveCovers = {
 
   <section class="season-catalog" aria-label={`Встречи сезона ${season.id}`}>
     {list.map((m,i)=>{
-      const curatedCovers = season.id === 1 ? seasonOneCovers[m.number] : season.id === 2 ? seasonTwoCovers[m.number] : season.id === 3 ? seasonThreeCovers[m.number] : season.id === 4 ? seasonFourCovers[m.number] : season.id === 5 ? seasonFiveCovers[m.number] : null;
+      const curatedCovers = season.id === 1 ? seasonOneCovers[m.number] : season.id === 2 ? seasonTwoCovers[m.number] : season.id === 3 ? seasonThreeCovers[m.number] : season.id === 4 ? seasonFourCovers[m.number] : season.id === 5 ? seasonFiveCovers[m.number] : season.id === 6 ? seasonSixCovers[m.number] : season.id === 7 ? seasonSevenCovers[m.number] : null;
       return <a class="meeting-card" href={`/meeting/${m.slug}`}>
       {curatedCovers ? (
         <div class:list={["meeting-cover-shell", {"is-dual": curatedCovers.length > 1}]}>

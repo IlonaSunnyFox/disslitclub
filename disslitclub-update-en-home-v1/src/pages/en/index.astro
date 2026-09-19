@@ -1,0 +1,110 @@
+---
+import Header from '../../components/Header.astro';
+import {seasons, authorEvents} from '../../data/meetings.js';
+import '../../styles/global.css';
+
+const sortedAuthorEvents = [...authorEvents].sort((a,b) => Number(Boolean(b.image)) - Number(Boolean(a.image)));
+const authorNames = {
+  'Саша Филипенко':'Sasha Filipenko', 'Алёна Алексина':'Alyona Aleksina', 'Лиз Ньюджент':'Liz Nugent',
+  'Алексей Конаков':'Alexey Konakov', 'Дина Рубина':'Dina Rubina', 'Владимир Сорокин':'Vladimir Sorokin',
+  'Борис Павлович':'Boris Pavlovich'
+};
+const bookTitles = {
+  'Кремулятор':'The Cremator', 'Суть вещи':'The Essence of the Thing', 'Странная Салли Даймонд':'Strange Sally Diamond',
+  'Табия 32':'Tabia 32', 'На солнечной стороне улицы':'On the Sunny Side of the Street'
+};
+const eventText = {
+  'Личная встреча с автором в клубе':'In-person meeting with the author at the club',
+  'Онлайн-встреча всего клуба с автором':'Online meeting between the author and the full club',
+  'Разговор с автором при подготовке презентации — Катя Грузинова':'Conversation with the author while preparing the presentation — Katya Gruzinova',
+  'Творческая встреча':'Author event', 'Закрытая лекция':'Private lecture'
+};
+const specialTitles = {'Творческая встреча':'Author event','Закрытая лекция с режиссером':'Private lecture with a director'};
+---
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DissLitClub — a private book club in Limassol</title>
+  <meta name="description" content="DissLitClub is a private book club in Limassol. Since 2020, we have been meeting every three weeks. Participation is by invitation." />
+  <link rel="alternate" hreflang="ru" href="https://disslit.club/" />
+  <link rel="alternate" hreflang="en" href="https://disslit.club/en/" />
+</head>
+<body>
+  <Header locale="en" />
+  <main>
+    <section class="hero-home wrap" id="about">
+      <div class="hero-copy">
+        <div class="hero-title-block">
+          <h1>Effort<br/>Without Pressure</h1>
+          <h2>A private book club</h2>
+        </div>
+        <p class="club-intro">Since 2020, we have been meeting<br/>in Limassol every three weeks.<br/>Participation is by invitation.</p>
+        <div class="hero-stats" aria-label="DissLitClub in numbers">
+          <div><strong>2020</strong><span>founded</span></div>
+          <div><strong>7</strong><span>seasons</span></div>
+          <div><strong>60+</strong><span>meetings</span></div>
+          <div><strong>60+</strong><span>books</span></div>
+          <div><strong>6</strong><span>author<br/>interactions</span></div>
+        </div>
+      </div>
+      <div class="hero-photo" aria-label="A DissLitClub meeting in Limassol">
+        <img src="/images/club-hero.jpg" alt="A DissLitClub meeting in Limassol" />
+      </div>
+    </section>
+
+    <section class="home-section wrap" id="authors">
+      <div class="home-section-title"><h2>Authors × DissLitClub</h2><a href="#authors">All author events →</a></div>
+      <div class="authors-home">
+        {sortedAuthorEvents.map((m) => {
+          const isSpecial = Boolean(specialTitles[m.title]);
+          return <a class="author-home-card" href="#authors">
+            {m.image && <img class="author-home-photo" src={m.image} alt="" loading="lazy" />}
+            <div class="author-home-name">{authorNames[m.author] || m.author}</div>
+            <div class="author-home-book">{isSpecial ? specialTitles[m.title] : `“${bookTitles[m.title] || m.title}”`}</div>
+            <div class="author-home-event">{eventText[m.authorEvent] || m.authorEvent}</div>
+            <div class="author-home-season">{m.date || (m.season ? `Season ${m.season}` : '')}</div>
+          </a>
+        })}
+      </div>
+      <button class="author-events-toggle" type="button" aria-expanded="false">All events</button>
+    </section>
+
+    <section class="current-mini wrap">
+      <div><span>Next meeting</span><strong>07 / 02</strong></div>
+      <div><span>30.09.2026 · second meeting of Season 7</span><strong>Alexander Kuprin · “The Pit”</strong></div>
+      <a href="#archive">About the meeting →</a>
+    </section>
+
+    <section class="home-section wrap" id="archive">
+      <div class="home-section-title"><h2>Season Archive</h2><span class="section-note">Each meeting has its own page</span></div>
+      <div class="season-strip">
+        {seasons.map((s) => <a class={`season-tile season-${s.id}`} href="#archive">
+          <img class="season-art" src={`/images/seasons/season-${s.id}.jpg`} alt="" loading="lazy" />
+          <div class="season-number">0{s.id}</div>
+          <div class="season-years">{s.years.replace('–',' / ')}</div>
+          <div class="season-visual" aria-hidden="true"><span>{s.id === 7 ? 'current season' : `${s.meetings.length} meetings`}</span></div>
+        </a>)}
+      </div>
+    </section>
+
+    <section class="home-section wrap" id="beyond">
+      <div class="home-section-title"><h2>Beyond the Text</h2></div>
+      <div class="beyond-home">
+        <a class="beyond-card theatre" href="#beyond"><span class="beyond-icon"><img src="/images/beyond/theatre.webp" alt="" /></span><div><h3>Theatre</h3><p>Our theatre visits and discussions of performances.</p></div></a>
+        <a class="beyond-card cinema" href="#beyond"><span class="beyond-icon"><img src="/images/beyond/cinema.webp" alt="" /></span><div><h3>Film Club</h3><p>Dedicated film screenings and discussions.</p></div></a>
+        <a class="beyond-card events" href="#beyond"><span class="beyond-icon"><img src="/images/beyond/events.webp" alt="" /></span><div><h3>Special Events</h3><p>Lectures, discussions and special gatherings.</p></div></a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer wrap"><span>© 2026 DissLitClub · Limassol, Cyprus</span><span><a href="/">RU</a> / <strong>EN</strong></span></footer>
+</body>
+</html>
+
+<script is:inline data-author-events-toggle-script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.querySelector('.author-events-toggle'); const grid = document.querySelector('.authors-home');
+    if (!btn || !grid) return;
+    btn.addEventListener('click', () => { const open = grid.classList.toggle('is-open'); btn.setAttribute('aria-expanded', String(open)); btn.textContent = open ? 'Hide' : 'All events'; });
+  });
+</script>

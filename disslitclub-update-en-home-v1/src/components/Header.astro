@@ -1,0 +1,19 @@
+---
+const { locale = 'ru' } = Astro.props;
+const isEn = locale === 'en';
+const home = isEn ? '/en/' : '/';
+---
+<header class="site-header wrap">
+  <a class="brand" href={home} aria-label={isEn ? 'DissLitClub — home' : 'DissLitClub — на главную'}>
+    <img src="/images/logo.png" alt="DissLitClub" />
+    <span>DissLitClub</span>
+  </a>
+  <nav aria-label={isEn ? 'Main navigation' : 'Основная навигация'}>
+    <a href={`${home}#about`}>{isEn ? 'About' : 'О клубе'}</a>
+    <a href={`${home}#authors`}>{isEn ? 'Authors × DissLitClub' : 'Авторы × DissLitClub'}</a>
+    <a href={`${home}#archive`}>{isEn ? 'Seasons' : 'Архив сезонов'}</a>
+    <a href={`${home}#beyond`}>{isEn ? 'Beyond the Text' : 'За пределами текста'}</a>
+    <a href="/media">{isEn ? 'Media' : 'Медиа'}</a>
+    <span class="lang"><a class={!isEn ? 'is-active' : ''} href="/">RU</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a class={isEn ? 'is-active' : ''} href="/en/">EN</a></span>
+  </nav>
+</header>
